@@ -15,6 +15,7 @@ namespace DBApi
         public void Create(T entity)
         {
             Context.Set<T>().Add(entity);
+
         }
 
         public void RemoveCar(string number)
@@ -56,6 +57,7 @@ namespace DBApi
         {
             return Context.Set<Car>().Where(x => x.Status != "Removed").Count();
         }
+
 
     }
 }

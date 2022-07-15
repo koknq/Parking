@@ -3,8 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:Fluent="urn:fluent-ribbon"
-        mc:Ignorable="d"
+        xmlns:Fluent="urn:fluent-ribbon" xmlns:controls="clr-namespace:System.Windows.Controls;assembly=DotNetProjects.Input.Toolkit"
+                     mc:Ignorable="d"
      Width="900" Height="1366"  MinHeight="500" MinWidth="900" Background="SlateGray" WindowStyle="SingleBorderWindow"  WindowStartupLocation="CenterScreen" BorderThickness="0" BorderBrush="#FF1F1F00">
     <Window.Resources>
         <SolidColorBrush x:Key="Fluent.Ribbon.Brushes.Button.Pressed.Background" Color="Transparent"/>
@@ -63,14 +63,14 @@
             </Fluent:Ribbon>
 
             <StackPanel Width="150" HorizontalAlignment="Left" Background="#FF272727">
-                <Button x:Name="btnParking" Content="Parking" FontSize="15" Background="#FF272727" Foreground="White" Margin="0,10,0,0" BorderThickness="0" Click="btnParking_Click"></Button>
-                <TextBlock x:Name="capacity" Text="(./.)" TextAlignment="Center" FontSize="15" Background="#FF272727" Foreground="White" Margin="0,10,0,0" FontStyle="Italic"></TextBlock>
+                <Button x:Name="btnParking" Content="Parking" FontSize="15" Background="#FF272727" BorderBrush="#FFD73D2C" Foreground="White" Margin="0,10,0,0" BorderThickness="0" Click="btnParking_Click"></Button>
+                <TextBlock x:Name="capacity" Text="- / -" TextAlignment="Center" FontSize="15" Background="#FF272727" Foreground="White" Margin="0,10,0,0" FontStyle="Italic"></TextBlock>
                 <Button x:Name="btnClear" Content="Clear" FontSize="15" Background="#FF272727" Foreground="White" Margin="0,10,0,0" BorderThickness="0" Click="btnClear_Click"></Button>
             </StackPanel>
 
-            <TabControl x:Name="myTabControl" BorderThickness="0" Background="#FF2D2D2D" Foreground="White" FontSize="20" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <TabControl x:Name="myTabControl" Background="#FF2D2D2D" BorderThickness="0" Foreground="White" FontSize="20" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
 
-                <TabItem x:Name="carsTabItem" Header="Cars" HorizontalAlignment="Left" FontSize="13" IsSelected="True" IsEnabled="False" Height="23" VerticalAlignment="Top">
+                <TabItem x:Name="carsTabItem" Header="Cars" HorizontalAlignment="Left" FontSize="13" IsSelected="True" IsEnabled="False" Height="23" VerticalAlignment="Top" Visibility="Collapsed">
                     <DataGrid x:Name="carsInTheParking" Background="#FF2D2D2D" Margin="10,10,10,10" IsReadOnly="True" AutoGenerateColumns="False" AlternatingRowBackground="Beige" FontWeight="Bold">
                         <DataGrid.Columns>
                             <DataGridTextColumn x:Name="numberColumn" Binding="{Binding Number}" Width="70" Header="Number" FontWeight="DemiBold"/>
@@ -84,9 +84,9 @@
                     </DataGrid>
                 </TabItem>
 
-                <TabItem x:Name="addCarTabItem" Header="Add car" HorizontalAlignment="Left" FontSize="13" IsEnabled="False">
+                <TabItem x:Name="addCarTabItem" Header="Add car" HorizontalAlignment="Left" FontSize="13" IsEnabled="False" Visibility="Collapsed">
                     <StackPanel VerticalAlignment="Top">
-                        <TextBlock Text="Adding a new car to the parking:" FontSize="15" Height="30" Background="#FF2D2D2D" Foreground="White" Margin="0,10,0,0"></TextBlock>
+                        <TextBlock Text=" Adding a new car to the parking:" FontSize="15" Height="30" Background="#FF2D2D2D" Foreground="White" Margin="0,10,0,0"></TextBlock>
                         <DockPanel HorizontalAlignment="Center" Margin="0,20,0,0">
                             <TextBlock Text="Model:" TextAlignment="Right" FontSize="15" Height="30" Width="80" Background="#FF2D2D2D" Foreground="White" Margin="0,10,10,0"></TextBlock>
                             <TextBox x:Name="modelBox" Height="30" Width="200" Background="#888" Foreground="Black" FontSize="15" TextAlignment="Center" FontWeight="Bold" MaxLength="20"></TextBox>
@@ -106,12 +106,12 @@
                     </StackPanel>
                 </TabItem>
 
-                <TabItem x:Name="removeCarTabItem" Header="Remove Car car" HorizontalAlignment="Left" FontSize="13" IsEnabled="False">
+                <TabItem x:Name="removeCarTabItem" Header="Remove Car car" HorizontalAlignment="Left" FontSize="13" IsEnabled="False" Visibility="Collapsed">
                     <StackPanel VerticalAlignment="Top">
-                        <TextBlock Text="Removing car from the parking:" FontSize="15" Height="30" Background="#FF2D2D2D" Foreground="White"  Margin="0,10,0,0"></TextBlock>
+                        <TextBlock Text=" Removing car from the parking:" FontSize="15" Height="30" Background="#FF2D2D2D" Foreground="White"  Margin="0,10,0,0"></TextBlock>
                         <DockPanel HorizontalAlignment="Center" Margin="0,20,0,0">
                             <TextBlock Text="Number:" TextAlignment="Right" FontSize="15" Height="30" Width="80" Background="#FF2D2D2D" Foreground="White"  Margin="0,10,10,0"></TextBlock>
-                            <TextBox x:Name="numberRemoveBox" Height="30" Width="200" Background="#888" Foreground="Black" FontSize="15" TextAlignment="Center" FontWeight="Bold"></TextBox>
+                            <controls:AutoCompleteBox x:Name="numberRemoveBox" Height="30" Width="200" Background="#888" Foreground="Black" FontSize="15" FontWeight="Bold"></controls:AutoCompleteBox>
                         </DockPanel>
                     </StackPanel>
                 </TabItem>
